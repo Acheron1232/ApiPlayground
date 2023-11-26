@@ -1,0 +1,15 @@
+.main {
+   /* border: 1px solid #fff; */
+   flex-grow: 1;
+   /* display: flex; */
+   /* justify-content: center; */
+   background-color: #121212;
+   border-radius: 16px;
+   align-self: stretch;
+
+   padding: 15px 30px;
+}
+
+h1 {
+   font-size: 3rem;
+}

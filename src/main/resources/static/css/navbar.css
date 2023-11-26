@@ -1,0 +1,28 @@
+.navbar {
+   background-color: #121212;
+   padding: 15px 30px;
+   border-radius: 16px;
+}
+.menu {
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+   font-size: 1.2rem;
+}
+
+.menu li {
+   color: #b3b3b3;
+   transition: all 0.3s ease;
+}
+
+.menu li:not(.active):hover{
+   transform: translate(15px, 0) scale(1.25);
+}
+
+.menu li.active{
+   color: #fff;
+   font-size: 1.8rem;
+}
+.menu li:last-child {
+   justify-self: end;
+}
