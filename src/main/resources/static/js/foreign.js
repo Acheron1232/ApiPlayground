@@ -1,52 +1,72 @@
 const userData = {
+   country: undefined,
+   city: undefined,
    position: {
       lotitude: undefined,
       longitude: undefined
    },
    geoGui: {
-      country :document.querySelector(".g-country p"),
+      country: document.querySelector(".g-country p"),
       city: document.querySelector(".g-city p"),
-      changeGeo(args){
-         const {country, city} = args;
-         country ?? (this.country.textContent = country);
-         city ?? (this.country.textContent = city);
+      changeGeo(args) {
+         const { country, city } = args;
+         country && (userData.country = country);
+         city && (userData.city = city);
+         userData.country && (this.country.textContent = userData.country);
+         userData.coty && (this.city.textContent = userData.city);
       },
-      getGeo(){
-         return {country: this.country.textContent,
-         city: this.city.textContent}
+      getGeo() {
+         return {
+            country: this.country.textContent,
+            city: this.city.textContent
+         };
       }
-   },
+   }
+};
+// variables
+const geoFind = document.querySelector(".targetGeo");
+const getCountry = document.querySelector(".getCountry");
+
+// functions
+const handlePosition = function (args) {
+   const { lotitude, longitude } = args;
+   fetch(
+      `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lotitude}&longitude=${longitude}&localityLanguage=en`
+   )
+      .then((response) => response.json())
+      .then((data) => {
+         userData.geoGui.changeGeo({
+            country: data.countryName,
+            city: data.city
+         });
+      });
 };
 
-console.log(userData);
-console.log(userData.geoGui.getGeo());
+const getCounrtyData = function (userD) {
+   return function () {
+      const country = userD.country;
+      fetch(`https://restcountries.com/v3.1/name/${userData.country}`)
+         .then((response) => response.json())
+         .then((data) => {
+            console.log(userData);
+            console.log(data);
+         });
+   };
+};
 
-navigator.geolocation.getCurrentPosition(
-   function (position) {
-      console.log("oleg");
-      console.log(position);
-      userData.position.lotitude = position.coords.latitude;
-      userData.position.longitude = position.coords.longitude;
-   },
-   function () {
-      console.log("could not acess location");
-   }
-);
+// listners
+geoFind.addEventListener("click", function () {
+   navigator.geolocation.getCurrentPosition(
+      function (position) {
+         // console.log(position);
+         userData.position.lotitude = position.coords.latitude;
+         userData.position.longitude = position.coords.longitude;
+         handlePosition(userData.position);
+      },
+      function () {
+         console.log("could not acess location");
+      }
+   );
+});
 
-// country.addEventListener("click", function () {
-//    fetch("https://restcountries.com/v3.1/name/deutschland")
-//       .then((response) => response.json())
-//       .then((data) => {
-//          console.log(data);
-//       });
-// });
-
-// infocountry.addEventListener("click", function () {
-//    fetch(
-//       `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${userData.position.lotitude}&longitude=${userData.position.longitude}&localityLanguage=en`
-//    )
-//       .then((response) => response.json())
-//       .then((data) => {
-//          console.log(data);
-//       });
-// });
+getCountry.addEventListener("click", getCounrtyData(userData));
