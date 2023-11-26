@@ -1,6 +1,6 @@
 'use strict'
 
-let stompClient = null;
+let stompClient = null; 
 let username = null;
 function connect(event) {
     username=document.querySelector(".username").value;

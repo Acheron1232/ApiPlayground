@@ -12,19 +12,30 @@
    <body>
       <div class="wrapper">
          <aside class="navbar">
-            <nav>
+            <nav class = "menu-wrapper">
                <ul class="menu">
                   <li class="active"><a href="">Foreign Api</a></li>
                   <li><a href="">Rest Server Api</a></li>
                   <li><a href="">Web Socket</a></li>
-                  <li><a href="">Credits</a></li>
+               </ul>
+               <ul class="menu">
+                <li><a href="">Credits</a></li>
                </ul>
             </nav>
          </aside>
          <main class="main">
             <h1>Foreign API</h1>
-            <button class="getCountry">country</button>
-            <button class="getCountry2">country</button>
+            <section class="geoGui">
+                <button class="targetGeo">target</button>
+                <div class="country">
+                    <p>Ukraine</p>
+                    <button class="changePar">c</button>
+                </div>
+                <div class="City">
+                    <p>Sumy</p>
+                    <button class="changePar">c</button>
+                </div>
+            </section>
          </main>
       </div>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>

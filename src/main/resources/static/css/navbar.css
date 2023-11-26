@@ -1,14 +1,18 @@
-.navbar {
-   background-color: #121212;
-   padding: 15px 30px;
-   border-radius: 16px;
+.menu-wrapper{
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   gap: 12px;
 }
 .menu {
    display: flex;
    flex-direction: column;
    gap: 15px;
    font-size: 1.2rem;
-}
+
+   background-color: #121212;
+   padding: 15px 30px;
+   border-radius: 16px;}
 
 .menu li {
    color: #b3b3b3;
