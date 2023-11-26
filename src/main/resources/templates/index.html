@@ -1,13 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<script></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-</body>
-
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="../static/css/base.css" />
+      <link rel="stylesheet" href="../static/css/navbar.css" />
+      <link rel="stylesheet" href="../static/css/wrapper.css" />
+      <link rel="stylesheet" href="../static/css/foreignMain.css" />
+      <title>Title</title>
+   </head>
+   <body>
+      <div class="wrapper">
+         <aside class="navbar">
+            <nav>
+               <ul class="menu">
+                  <li class="active"><a href="">Foreign Api</a></li>
+                  <li><a href="">Rest Server Api</a></li>
+                  <li><a href="">Web Socket</a></li>
+                  <li><a href="">Credits</a></li>
+               </ul>
+            </nav>
+         </aside>
+         <main class="main">
+            <h1>Foreign API</h1>
+            <button class="getCountry">country</button>
+            <button class="getCountry2">country</button>
+         </main>
+      </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+      <script src="../static/js/main.js"></script>
+      <script src="../static/js/foreign.js"></script>
+   </body>
 </html>
