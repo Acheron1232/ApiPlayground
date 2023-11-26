@@ -1,9 +1,11 @@
 .main {
    /* border: 1px solid #fff; */
    flex-grow: 1;
-   /* display: flex; */
-   /* justify-content: center; */
-   background-color: #121212;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   background: rgb(18, 18, 18);
+   background: linear-gradient(45deg, rgba(18, 18, 18, 1) 0%, rgba(18, 26, 50, 1) 100%);
    border-radius: 16px;
    align-self: stretch;
 
@@ -11,6 +13,71 @@
 }
 
 h1 {
-   font-size: 3rem;
+   font-size: 3.5rem;
    text-align: center;
+}
+
+.geoGui {
+   margin: 45px 0 0 0;
+   display: flex;
+   /* border: 1px solid #fff; */
+   gap: 30px;
+   color: #bdbdbd;
+}
+
+.geoGui > * {
+   opacity: 0.6;
+   transition: all 0.15s ease;
+}
+
+.geoGui .targetGeo {
+   background: #121212 url("../icons/geo-location-svgrepo-com.svg") 50% 50%/contain;
+   width: 5.5rem;
+   height: 5.5rem;
+   border-radius: 20px;
+   border: none;
+   cursor: pointer;
+}
+
+.geoGui .targetGeo:is(:hover, :focus) {
+   opacity: 1;
+   outline: 2px solid #bdbdbd;
+}
+
+.geoGui .g-country, .g-city {
+   background: #121212;
+   font-size: 2.5rem;
+   line-height: 1em;
+   padding: 1.5rem;
+   border-radius: 20px;
+   border: none;
+   position: relative;
+}
+
+.geoGui .changePar {
+   position: absolute;
+   top: 0.5rem;
+   right: 0.5rem;
+   /* background: url("../icons/edit.svg") 50% 50%/contain;*/
+   background-color: #bdbdbd;
+   height: 0.8rem;
+   width: 0.8rem;
+   display: block;
+   border: none;
+   /* outline: 1px solid #bdbdbd; */
+   /* padding: 5px; */
+   border-radius: 50vw;
+   cursor: pointer;
+}
+
+.geoGui > * > input[type="text"]{
+   width: 6ch;
+   display: block;
+   background-color: red;
+}
+
+.geoGui > *:has(.changePar:hover){
+   outline: 2px solid #bdbdbd;
+   opacity: 1;
+
 }

@@ -16,7 +16,7 @@
 
 .menu li {
    color: #b3b3b3;
-   transition: all 0.3s ease;
+   transition: all 0.15s ease;
 }
 
 .menu li:not(.active):hover{
