@@ -35,8 +35,8 @@ const countryData = {
 const geoFind = document.querySelector(".targetGeo");
 const getCountry = document.querySelector(".getCountry");
 
-const changeCountry = document.querySelector(".g-country .changePar");
-const changeCity = document.querySelector(".g-city .changePar");
+const changePars = document.querySelectorAll(".geoGui button");
+const geoInputs = document.querySelectorAll(".geoGui input");
 
 // functions
 const handlePosition = function (args) {
@@ -53,14 +53,14 @@ const handlePosition = function (args) {
          userData.geoGui.country.classList.remove("loading");
          userData.geoGui.city.classList.remove("loading");
       });
-};🤯
+};
 // listners
 geoFind.addEventListener("click", function () {
    userData.geoGui.country.classList.add("loading");
    userData.geoGui.city.classList.add("loading");
-   console.log(userData.geoGui);
-   console.log(userData.geoGui.country.classList);
-   console.log(userData.geoGui.country);
+   // console.log(userData.geoGui);
+   // console.log(userData.geoGui.country.classList);
+   // console.log(userData.geoGui.country);
    navigator.geolocation.getCurrentPosition(
       function (position) {
          // console.log(position);
@@ -74,11 +74,36 @@ geoFind.addEventListener("click", function () {
    );
 });
 
+changePars.forEach((el) => {
+   el.addEventListener("click", function () {
+      const box = el.parentElement;
+      const inpt = box.querySelector("input");
+      box.classList.toggle("edit");
+      inpt.readOnly = !inpt.readOnly;
+      inpt.focus();
+      if (el.switch) {
+         userData.geoGui.changeGeo({
+            country: box.className.includes("co") ? inpt.value : undefined,
+            city: box.className.includes("ci") ? inpt.value : undefined
+         });
+         el.switch = 0;
+      }
+      el.switch = 1;
+   });
+});
+
+geoInputs.forEach((el) => {
+   // console.log(geoInputs);
+   el.addEventListener("input", function(){
+      el.style.width = Math.max(el.value.length, 6) + "ch";
+   })
+});
 getCountry.addEventListener("click", function () {
-   fetch(`https://restcountries.com/v3.1/name/${"ukraine"}`)
+   fetch(`https://restcountries.com/v3.1/name/${userData.country}`)
       .then((response) => response.json())
       .then((data) => {
-         console.log(data[0]);
+         // if (countryData.)
+         // console.log(data[0]);
          // console.log(userData);
          countryData.nativeName = data[0].name.nativeName;
          countryData.svgFlag = data[0].flags.svg;

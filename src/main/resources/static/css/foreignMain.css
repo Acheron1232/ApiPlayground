@@ -19,8 +19,12 @@ h1 {
    text-align: center;
    font-weight: 700;
 }
-
 .geoGui {
+   /* max-width: 500px; */
+   flex-grow:1;
+   justify-content: center;
+   flex-wrap: wrap;
+
    /* margin: 45px 0 0 0; */
    display: flex;
    /* border: 1px solid #fff; */
@@ -100,18 +104,24 @@ h1 {
 
 .geoGui .changePar {
    position: absolute;
-   top: 0.5rem;
-   right: 0.5rem;
-   /* background: url("../icons/edit.svg") 50% 50%/contain;*/
-   background-color: #bdbdbd;
-   height: 0.8rem;
-   width: 0.8rem;
+   top: 0.3rem;
+   right: 0.3rem;
+   background: url("../icons/edit.svg") 50% 50%/contain;
+   /* background-color: #bdbdbd; */
+   height: 1.6rem;
+   width: 1.6rem;
    display: block;
    border: none;
    /* outline: 1px solid #bdbdbd; */
    /* padding: 5px; */
    border-radius: 50vw;
    cursor: pointer;
+   opacity: 0.1;
+   transition: all 0.15s ease;
+}
+
+.geoGui .changePar:hover{
+   opacity: 1;
 }
 
 .geoGui input[type="text"] {
@@ -120,14 +130,17 @@ h1 {
    cursor: default;
 }
 
-.geoGui input[type="text"].edit{
+.geoGui input[type="text"]{
    cursor: text;
 }
 
-.geoGui>*:has(.changePar:hover) {
+.geoGui>*:has(.changePar:hover), .geoGui>*.edit {
    outline: 2px solid #bdbdbd;
    opacity: 1;
+}
 
+.geoGui >*.edit .changePar {
+   opacity: 1;
 }
 
 
