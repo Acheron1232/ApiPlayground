@@ -13,7 +13,7 @@ const userData = {
          country && (userData.country = country);
          city && (userData.city = city);
          userData.country && (this.country.textContent = userData.country);
-         userData.coty && (this.city.textContent = userData.city);
+         userData.city && (this.city.textContent = userData.city);
       },
       getGeo() {
          return {
@@ -22,6 +22,13 @@ const userData = {
          };
       }
    }
+};
+
+const countryData = {
+   nativeName: undefined,
+   svgFlag: undefined,
+   population: undefined,
+   languages: undefined
 };
 // variables
 const geoFind = document.querySelector(".targetGeo");
@@ -41,19 +48,6 @@ const handlePosition = function (args) {
          });
       });
 };
-
-const getCounrtyData = function (userD) {
-   return function () {
-      const country = userD.country;
-      fetch(`https://restcountries.com/v3.1/name/${userData.country}`)
-         .then((response) => response.json())
-         .then((data) => {
-            console.log(userData);
-            console.log(data);
-         });
-   };
-};
-
 // listners
 geoFind.addEventListener("click", function () {
    navigator.geolocation.getCurrentPosition(
@@ -69,4 +63,62 @@ geoFind.addEventListener("click", function () {
    );
 });
 
-getCountry.addEventListener("click", getCounrtyData(userData));
+getCountry.addEventListener("click", function () {
+   fetch(`https://restcountries.com/v3.1/name/${"Ukraine"}`)
+      .then((response) => response.json())
+      .then((data) => {
+         // console.log(userData);
+         countryData.nativeName = data[0].name.nativeName;
+         countryData.svgFlag = data[0].flags.svg;
+         countryData.population = data[0].population;
+         countryData.languages = data[0].languages;
+         console.log(countryData);
+         const ul = document.createElement("ul");
+         ul.className = "country";
+
+         // Create the li elements
+         const liHero = document.createElement("li");
+         liHero.className = "hero";
+         const h4Hero = document.createElement("h4");
+         const langObj = Object.entries(countryData.nativeName)[0][1];
+         console.log(langObj)
+         h4Hero.textContent = langObj.official
+         const img = document.createElement("img");
+         img.setAttribute("src", countryData.svgFlag);
+         liHero.appendChild(h4Hero);
+         liHero.appendChild(img);
+
+         const liPopulation = document.createElement("li");
+         liPopulation.className = "population";
+         const h4Population = document.createElement("h4");
+         h4Population.textContent = "Population:";
+         const pPopulation = document.createElement("p");
+         let formatedP = Math.trunc(countryData.population/1_0_000);
+         formatedP = formatedP/100 + " millions"
+         pPopulation.textContent = formatedP;
+         liPopulation.appendChild(h4Population);
+         liPopulation.appendChild(pPopulation);
+
+         const liLanguages = document.createElement("li");
+         liLanguages.className = "languages";
+         const h4Languages = document.createElement("h4");
+         h4Languages.textContent = "Languages:";
+         const languagesList = document.createElement("ul");
+         liLanguages.appendChild(h4Languages);
+         liLanguages.appendChild(languagesList);
+         console.log(Object.entries(countryData.languages));
+         for (const [code, language] of Object.entries(countryData.languages)){
+            console.log(language);
+            const languageEl = document.createElement("li");
+            languageEl.textContent = language;
+            languagesList.appendChild(languageEl);
+         }
+
+         // Append li elements to ul
+         ul.appendChild(liHero);
+         ul.appendChild(liPopulation);
+         ul.appendChild(liLanguages);
+         console.log(document.querySelector(".countryData"))
+         document.querySelector(".countryData").appendChild(ul);
+      });
+});

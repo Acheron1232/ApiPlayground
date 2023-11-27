@@ -25,13 +25,15 @@ a, a:visited{
    height: 100%;
 }
 
-input{
+input, button{
    all:unset;
+   cursor: pointer;
 }
 
 h1,h2,h3,h4 {
    font-size: 1em;
    font-family: 'Montserrat', sans-serif;
+   font-weight: 400;
 }
 
 ul {

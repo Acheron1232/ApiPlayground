@@ -10,15 +10,17 @@
    align-self: stretch;
 
    padding: 15px 30px;
+   gap: 45px;
 }
 
 h1 {
    font-size: 3.5rem;
    text-align: center;
+   font-weight: 700;
 }
 
 .geoGui {
-   margin: 45px 0 0 0;
+   /* margin: 45px 0 0 0; */
    display: flex;
    /* border: 1px solid #fff; */
    gap: 30px;
@@ -26,7 +28,7 @@ h1 {
 }
 
 .geoGui > * {
-   opacity: 0.6;
+   opacity: 0.8;
    transition: all 0.15s ease;
 }
 
@@ -80,4 +82,69 @@ h1 {
    outline: 2px solid #bdbdbd;
    opacity: 1;
 
+}
+
+/* Country data */
+.countryData{
+   /* margin: 45px 0 0 0; */
+   transition: all 0.15s ease;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   color:#bdbdbd;
+   gap: 2rem;
+}
+.getCountry {
+   background-color: #121212;
+   font-size: 2rem;
+   padding: 1.5rem 3rem;
+   border-radius: 20px;
+   opacity: 0.8;
+   color:#bdbdbd;
+   transition: inherit;
+}
+
+.getCountry:hover{
+   outline: 2px solid #bdbdbd;
+   opacity: 1;
+}
+
+.country {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: 45px;
+}
+
+.country h4 {
+   font-weight: 700;
+}
+
+.hero{
+   display: flex;
+   flex-direction: column;
+   max-width: 300px;
+   grid-row: span 2;
+   background-color: #121212;
+   font-size: 1.8rem;
+   padding: 0.7rem 1.4rem;
+   border-radius: 20px;
+   gap: 0.7rem;
+}
+
+.hero h4 {
+   text-align: center;
+   line-height: 1em;
+}
+
+.hero img {
+   width: 100%;
+   display: block;
+   aspect-ratio: 1;
+}
+
+.country .languages, .population{
+   background-color: #121212;
+   font-size: 1.8rem;
+   padding: 0.7rem 1.4rem;
+   border-radius: 20px;
 }
