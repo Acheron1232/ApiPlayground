@@ -120,10 +120,6 @@ h1 {
    transition: all 0.15s ease;
 }
 
-.geoGui .changePar:hover{
-   opacity: 1;
-}
-
 .geoGui input[type="text"] {
    width: 6ch;
    display: block;
@@ -134,12 +130,12 @@ h1 {
    cursor: text;
 }
 
-.geoGui>*:has(.changePar:hover), .geoGui>*.edit {
+.geoGui>*:has(.changePar:hover), .geoGui>*:has(input:focus){
    outline: 2px solid #bdbdbd;
    opacity: 1;
 }
 
-.geoGui >*.edit .changePar {
+.geoGui .changePar:hover, .geoGui >*:has(input:focus) .changePar {
    opacity: 1;
 }
 
