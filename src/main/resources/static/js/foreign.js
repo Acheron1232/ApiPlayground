@@ -135,6 +135,12 @@ getCountry.addEventListener("click", function () {
          countryData.languages = data[0].languages;
          countryData.capital = data[0].capital;
          if (document.querySelector(".countryData ul")) {
+            if (document.querySelector(".currencyData div")){
+               console.log("yey")
+               document.querySelector(".currencyData div").remove();
+               document.querySelector(".currencyData > h3").remove();
+               document.querySelector(".currencyData > h4").remove();
+            }
             const parentNode = document.querySelector(".countryData ul");
             // console.log(parentNode);
             // console.log(parentNode.querySelector(".hero h4"))
