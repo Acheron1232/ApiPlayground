@@ -24,20 +24,6 @@ const userData = {
    }
 };
 
-const countryData = {
-   nativeName: undefined,
-   svgFlag: undefined,
-   population: undefined,
-   languages: undefined,
-   capital: undefined
-};
-// variables
-const geoFind = document.querySelector(".targetGeo");
-const getCountry = document.querySelector(".getCountry");
-
-const changePars = document.querySelectorAll(".geoGui button");
-const geoInputs = document.querySelectorAll(".geoGui input");
-
 // functions
 const handlePosition = function (args) {
    const { lotitude, longitude } = args;
@@ -54,6 +40,23 @@ const handlePosition = function (args) {
          userData.geoGui.city.classList.remove("loading");
       });
 };
+
+const countryData = {
+   nativeName: undefined,
+   svgFlag: undefined,
+   population: undefined,
+   languages: undefined,
+   capital: undefined,
+   currency: undefined
+};
+// variables
+const geoFind = document.querySelector(".targetGeo");
+const getCountry = document.querySelector(".getCountry");
+const changePars = document.querySelectorAll(".geoGui button");
+const geoInputs = document.querySelectorAll(".geoGui input");
+
+const getCurrency = document.querySelector(".getCurrency");
+
 // listners
 geoFind.addEventListener("click", function () {
    userData.geoGui.country.classList.add("loading");
@@ -95,24 +98,24 @@ changePars.forEach((el) => {
 });
 
 geoInputs.forEach((el) => {
+
+   el.addEventListener("input", function(){
+      el.style.width = Math.max(el.value.length, 6) + "ch";
+   })
    // console.log(geoInputs);
    el.addEventListener("keydown", function (event) {
       // console.log(event);
       // console.log(event.key);
-      console.log(el.value.length);
-      if ((event.key === "Enter")) {
+      // console.log(el.value.length);
+      if (event.key === "Enter") {
          // el.blur();
          el.disabled = true;
          // console.log("?")
-         el.value.length;
       }
-      else{
-         el.style.width = Math.max(el.value.length, 6) + "ch";
-      }
-      
    });
    el.addEventListener("blur", function () {
       el.readOnly = true;
+      el.disabled = true;
       userData.geoGui.changeGeo({
          country: el.parentElement.className.includes("co")
             ? el.value
@@ -125,6 +128,7 @@ getCountry.addEventListener("click", function () {
    fetch(`https://restcountries.com/v3.1/name/${userData.country}`)
       .then((response) => response.json())
       .then((data) => {
+         // console.log(data[0]);
          countryData.nativeName = data[0].name.nativeName;
          countryData.svgFlag = data[0].flags.svg;
          countryData.population = data[0].population;
@@ -163,6 +167,8 @@ getCountry.addEventListener("click", function () {
                langList.appendChild(languageEl);
             }
          } else {
+
+            document.querySelector(".currencyData").classList.remove("--hidden");
             // console.log(data[0]);
             // console.log(userData);
 
@@ -228,4 +234,57 @@ getCountry.addEventListener("click", function () {
             document.querySelector(".countryData").appendChild(ul);
          }
       });
+});
+
+getCurrency.addEventListener("click", function () {
+   fetch(`https://restcountries.com/v3.1/name/${userData.country}`)
+      .then((res) => res.json())
+      .then((dt) => {
+         countryData.currency = Object.entries(dt[0].currencies)[0][0].toLowerCase();
+         countryData.currencyFullName = Object.entries(dt[0].currencies)[0][1].name;
+         console.log(countryData.currencyFullName);
+         // console.log(countryData.currency);
+         const url = `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${countryData.currency}.json`
+         fetch(url)
+            .then((response) => response.json())
+            .then((data) => {
+               console.log(data[countryData.currency]);
+               const eur = data[countryData.currency].eur;
+               const usd = data[countryData.currency].usd;
+               const parentNode = document.querySelector(".currencyData");
+               const title = document.createElement("h3");
+               title.textContent = countryData.currency.toUpperCase();
+               const subTitle = document.createElement("h4");
+               subTitle.textContent = countryData.currencyFullName;
+               
+               const box = document.createElement("div");
+               box.className = "box";
+               
+               const usdBox = document.createElement("div");
+               const h4Usd = document.createElement("h4");
+               h4Usd.textContent = "USD"
+               const pUsd = document.createElement("p");
+               pUsd.textContent = Math.trunc((1/usd)*10) / 10;
+               usdBox.appendChild(h4Usd);
+               usdBox.appendChild(pUsd);
+
+               const eurBox = document.createElement("div");
+               const h4Eur = document.createElement("h4");
+               h4Eur.textContent = "EURO"
+               const pEur = document.createElement("p");
+               pEur.textContent = Math.trunc((1/eur)*10) / 10;
+               eurBox.appendChild(h4Eur);
+               eurBox.appendChild(pEur);
+               
+
+
+               box.appendChild(usdBox);
+               box.appendChild(eurBox);
+               parentNode.appendChild(title);
+               parentNode.appendChild(subTitle);
+               parentNode.appendChild(box);
+
+            });
+      });
+   
 });
