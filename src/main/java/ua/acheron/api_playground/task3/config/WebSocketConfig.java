@@ -1,4 +1,4 @@
-package ua.acheron.api_playground.config;
+package ua.acheron.api_playground.task3.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;

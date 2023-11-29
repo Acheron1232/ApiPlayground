@@ -1,4 +1,4 @@
-package ua.acheron.api_playground.controller;
+package ua.acheron.api_playground.task3.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.time.LocalDateTime;
 
-@Controller
+@Controller("task3MainController")
 public class MainController {
 
     @GetMapping
