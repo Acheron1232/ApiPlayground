@@ -1,3 +1,7 @@
+.navbar{
+   max-width: 240px;
+   flex-grow:  1;
+}
 .menu-wrapper{
    display: flex;
    flex-direction: column;
@@ -20,7 +24,7 @@
 }
 
 .menu li:not(.active):hover{
-   transform: translate(15px, 0) scale(1.25);
+   transform: translate(25px, 0) scale(1.25);
 }
 
 .menu li.active{

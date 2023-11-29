@@ -248,13 +248,19 @@ getCurrency.addEventListener("click", function () {
       .then((dt) => {
          countryData.currency = Object.entries(dt[0].currencies)[0][0].toLowerCase();
          countryData.currencyFullName = Object.entries(dt[0].currencies)[0][1].name;
-         console.log(countryData.currencyFullName);
+         // console.log(countryData.currencyFullName);
          // console.log(countryData.currency);
          const url = `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${countryData.currency}.json`
          fetch(url)
             .then((response) => response.json())
             .then((data) => {
-               console.log(data[countryData.currency]);
+               if (document.querySelector(".currencyData div")){
+                  console.log("yey")
+                  document.querySelector(".currencyData div").remove();
+                  document.querySelector(".currencyData > h3").remove();
+                  document.querySelector(".currencyData > h4").remove();
+               }
+               // console.log(data[countryData.currency]);
                const eur = data[countryData.currency].eur;
                const usd = data[countryData.currency].usd;
                const parentNode = document.querySelector(".currencyData");

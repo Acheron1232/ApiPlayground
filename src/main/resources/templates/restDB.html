@@ -3,19 +3,24 @@
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link
+         rel="shortcut icon"
+         href="../static/icons/logo.svg"
+         type="image/x-icon"
+      />
       <link rel="stylesheet" href="../static/css/base.css" />
       <link rel="stylesheet" href="../static/css/navbar.css" />
       <link rel="stylesheet" href="../static/css/wrapper.css" />
       <link rel="stylesheet" href="../static/css/rest.css" />
-      <title>Document</title>
+      <title>Api | Rest</title>
    </head>
    <body>
       <div class="wrapper">
          <aside class="navbar">
             <nav class="menu-wrapper">
                <ul class="menu">
-                  <li class="active"><a href="">Foreign Api</a></li>
-                  <li><a href="">Rest Server Api</a></li>
+                  <li><a href="">Foreign Api</a></li>
+                  <li class="active"><a href="">Rest Server Api</a></li>
                   <li><a href="">Web Socket</a></li>
                </ul>
                <ul class="menu">
@@ -26,17 +31,38 @@
          <main class="main">
             <h1>Server rest Api</h1>
             <section class="server-info">
+               <button class="sInfo"></button>
                <ul>
                   <li>Java Spring 8.2</li>
                   <li>PostgreSQL</li>
                   <li>Aws SS3 ephiopia</li>
                </ul>
             </section>
+            <div class="modalWrite">
+               <div class="overlay"></div>
+               <form action="" method="get" autocomplete="off">
+                  <h3>Write to Database</h3>
+                  <fieldset>
+                     <input type="text" name="name" placeholder=" "/>
+                     <p>Name</p>
+                  </fieldset>
+                  <fieldset>
+                     <input type="number" name="age" placeholder=" "/>
+                     <p>Age</p>
+                  </fieldset>
+                  <fieldset>
+                     <input type="text" name="job" placeholder=" "/>
+                     <p>Occupation</p>
+                  </fieldset>
+                  <button>Write</button>
+               </form>
+            </div>
             <section class="dbGUI">
-               <button class="retrieve">retrieve</button>
-               <button class="write">write</button>
+               <button class="retrieve">Retrieve</button>
+               <button class="write">Write</button>
             </section>
          </main>
       </div>
+      <script src="../static/js/rest.js"></script>
    </body>
 </html>
