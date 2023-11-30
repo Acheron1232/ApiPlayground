@@ -20,6 +20,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
     String username;
+    String occupation;
+    Integer age;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     LocalDateTime time;
 }
