@@ -15,7 +15,7 @@
    position: relative;
 }
 
-.--hidden{
+.--hidden {
    display: none !important;
 }
 
@@ -27,7 +27,7 @@ h1 {
 }
 
 .sInfo {
-   background: rgba(255,255,255,0.1) url("../icons/db.svg") 50% 50%/contain no-repeat;
+   background: rgba(255, 255, 255, 0.1) url("../icons/db.svg") 50% 50%/contain no-repeat;
    height: 3.5rem;
    display: block;
    aspect-ratio: 1;
@@ -39,36 +39,37 @@ h1 {
    opacity: 0.75;
    transition: all 0.15s ease;
 }
-.sInfo:hover{
+
+.sInfo:hover {
    opacity: 0.9;
 }
 
-.sInfo:hover ~ ul {
+.sInfo:hover~ul {
    opacity: 0.9 !important;
 }
 
-.server-info ul{
+.server-info ul {
    position: absolute;
    display: flex;
    /* display: none; */
    flex-direction: column;
    gap: 15px;
    /* color: #121212; */
-   background-color: rgba(255,255,255,0.05);
+   background-color: rgba(255, 255, 255, 0.05);
    padding: 0.5rem 3rem 0.5rem 1.5rem;
    border-radius: 20px;
    opacity: 0;
-   top:5.5rem;
+   top: 5.5rem;
    right: 2rem;
    transition: all 0.15s ease;
 }
 
-.server-info ul li{
+.server-info ul li {
    /* border: 1px solid #fff; */
    font-size: 1.2rem;
 }
 
-.dbGUI{
+.dbGUI {
    margin: -45px 0 0 0;
    display: grid;
    grid-template-columns: 1fr 1fr;
@@ -78,7 +79,8 @@ h1 {
    align-self: stretch;
    margin:0 auto; */
 }
-.dbGUI > * {
+
+.dbGUI>* {
    /* flex: 1; */
    display: block;
    /* border: 1px solid #000; */
@@ -92,15 +94,15 @@ h1 {
    opacity: 0.8;
    text-align: center;
    transition: all 0.15s ease;
-   box-shadow: 0 4px 16px rgba(255,255,255,0.08);
+   box-shadow: 0 4px 16px rgba(255, 255, 255, 0.08);
 }
 
-.dbGUI > *:hover {
+.dbGUI>*:hover {
    outline: 2px solid #bdbdbd;
    opacity: 1;
 }
 
-.modalWrite{
+.modalWrite {
    position: absolute;
    top: 0;
    left: 0;
@@ -130,19 +132,26 @@ h1 {
    display: block;
    border-radius: 20px;
    /* border: 1px solid #000; */
-   background: #1212129e;
+   /* background: #121212; */
+   background: rgb(18, 18, 18);
+   background: linear-gradient(45deg, rgba(18, 18, 18, 1) 0%, rgba(54, 19, 22, 1) 100%);
    padding: 2rem 4rem;
-   box-shadow: 0 4px 30px rgba(54, 19, 22, 1);
+   box-shadow: 0 2px 50px rgba(0,0,0,0.5);
    z-index: 2;
 }
-.modalWrite fieldset {
+
+.modalWrite label {
    display: block;
    margin: 2rem 0 0 0;
-   border: 1px solid #fff;
+   /* border: 1px solid #fff; */
+   background: rgba(255, 255, 255, 0.05);
+   /* box-shadow: 0 2px 3px rgba(255, 255, 255, 0.05); */
+   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
    font-size: 2.2rem;
+   border: none;
    border-radius: 10px;
    padding: 1.3rem 1rem 0.5rem;
-   max-width: 15ch;
+   max-width: 20ch;
    position: relative;
 }
 
@@ -158,9 +167,11 @@ h1 {
    font-size: 2.2rem;
    transition: all 0.15s ease;
    opacity: 0.7;
+   cursor: text;
 }
 
-.modalWrite input:focus ~ p, .modalWrite input:not(:placeholder-shown) ~ p {
+.modalWrite input:focus~p,
+.modalWrite input:not(:placeholder-shown)~p {
    font-size: 1.1rem;
    top: 0.1rem;
    /* text-shadow: 1px 0 1px #000; */
@@ -173,18 +184,19 @@ h1 {
    font-weight: 700;
 }
 
-.modalWrite button {
+.modalWrite input[type='button'] {
    margin: 2rem auto 0;
    display: block;
-   font-size: 2rem;
-   background-color: rgba(54, 19, 22, 0.4);
-   padding: 1rem 3rem;
-   border-radius: 10px;
+   font-size: 2.5rem;
+   background: #1212129e;
+   padding: 1rem 4.5rem;
+   border-radius: 20px;
    transition: all 0.15s ease;
-   box-shadow: 0 2px 10px rgba(255,255,255,0.06);
+   box-shadow: 0 4px 16px rgba(255, 255, 255, 0.04);
+   cursor: pointer;
 }
 
-.modalWrite button:hover {
+.modalWrite input[type='button']:hover {
    outline: 2px solid #bdbdbd;
    opacity: 1;
 }
