@@ -1,0 +1,18 @@
+.main {
+   padding: 15px 30px;
+   background: rgb(18, 18, 18);
+   background: linear-gradient(45deg, rgba(18, 18, 18, 1) 0%, rgba(0, 45, 36, 1) 100%);
+   align-self: stretch;
+   flex-grow: 1;
+   border-radius: 16px;
+}
+
+.main>*:not(:nth-child(1)) {
+   margin-top: 45px;
+}
+
+h1 {
+   font-size: 3.5rem;
+   text-align: center;
+   font-weight: 700;
+}

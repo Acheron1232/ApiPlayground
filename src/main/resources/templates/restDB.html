@@ -19,9 +19,9 @@
          <aside class="navbar">
             <nav class="menu-wrapper">
                <ul class="menu">
-                  <li><a href="">Foreign Api</a></li>
-                  <li class="active"><a href="">Rest Server Api</a></li>
-                  <li><a href="">Web Socket</a></li>
+                  <li><a href="index.html">Foreign Api</a></li>
+                  <li class="active"><a href="restDB.html">Rest Server Api</a></li>
+                  <li><a href="sockets.html">Web Socket</a></li>
                </ul>
                <ul class="menu">
                   <li><a href="">Credits</a></li>
@@ -38,32 +38,35 @@
                   <li>Aws SS3 ephiopia</li>
                </ul>
             </section>
-            <div class="modalWrite">
+            <div class="modalWrite --hidden">
                <div class="overlay"></div>
                <form action="" method="get" autocomplete="off">
                   <h3>Write to Database</h3>
                   <label>
-                     <input type="text" name="name" placeholder=" "/>
+                     <input type="text" name="name" placeholder=" " />
                      <p>Name</p>
                   </label>
                   <label>
-                     <input type="number" name="age" placeholder=" "/>
+                     <input type="number" name="age" placeholder=" " />
                      <p>Age</p>
                   </label>
                   <label>
-                     <input type="text" name="job" placeholder=" "/>
+                     <input type="text" name="job" placeholder=" " />
                      <p>Occupation</p>
                   </label>
-                  <input type="button" value="Submit">
+                  <input type="button" value="Submit" />
                </form>
             </div>
             <section class="dbGUI">
                <button class="retrieve">Retrieve</button>
                <button class="write">Write</button>
             </section>
-            <section></section>
+            <section class="recievedData">
+            </section>
          </main>
       </div>
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
       <script src="../static/js/rest.js"></script>
    </body>
 </html>
