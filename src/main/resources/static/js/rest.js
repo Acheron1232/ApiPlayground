@@ -1,12 +1,12 @@
-const YESS = '';
+const YESS = 'sdf';
 
 const PHurl = "https://restcountries.com/v3.1/name/usa";
 
 const urls = {
-   insert: (YESS && "/database/insert") || PHurl,
-   retrieve: (YESS && "/database/all") || PHurl,
-   retrieveOne: (YESS && "/database/id/") || PHurl,
-   server: (YESS && "/server") || PHurl,
+   insert: (YESS && "/api/v2/database/insert") || PHurl,
+   retrieve: (YESS && "/api/v2/database/all") || PHurl,
+   retrieveOne: (YESS && "/api/v2/database/id") || PHurl,
+   server: (YESS && "/api/v2/server") || PHurl,
 }
 
 //Server
@@ -15,9 +15,11 @@ const sList = document.querySelector(".server-info ul");
 
 sInfo.addEventListener("mouseenter", function(){
    axios.get(urls.server).then(response=>{
-      sList.querySelector("li:nth-child(1)").textContent = "bobr";
-      sList.querySelector("li:nth-child(2)").textContent = "chmo";
-      sList.querySelector("li:nth-child(3)").textContent = "chmots";
+      const data = response.data;
+      console.log(data);
+      sList.querySelector("li:nth-child(1)").textContent = data[0];
+      sList.querySelector("li:nth-child(2)").textContent = data[1];
+      sList.querySelector("li:nth-child(3)").textContent = data[2];
    })
 })
 
@@ -50,13 +52,17 @@ dbWrite.addEventListener("click", function () {
    console.log(inputs);
    console.log(inputs.get());
    const data = inputs.get();
+
    fetch(urls.insert, {
-      method: "post",
-      body: {
-         name: data[0],
-         age: data[1],
-         job: data[2]
-      }
+      method: "POST",
+      headers:{
+         "Content-type":"application/json"
+      },
+      body: JSON.stringify({
+         username: data[0],
+         age:Number(data[1]),
+         occupation: data[2]
+      })
    });
 });
 
@@ -80,7 +86,7 @@ const retrieve = document.querySelector(".retrieve");
 
 retrieve.addEventListener("click", function () {
    axios.get(urls.retrieve).then((response) => {
-      const data = testData;
+      const data = response.data;
       if (globals.dbLength === testData.length) {
          console.log("aboba");
       } else {
@@ -95,18 +101,18 @@ retrieve.addEventListener("click", function () {
                document.createElement("li")
             ];
             row.idid = i.id;
-            rowData[0].textContent = i.name;
+            rowData[0].textContent = i.username;
             rowData[0].addEventListener("mouseenter", function () {
                axios
-                  .get(urls.retrieveOne)
+                  .get(urls.retrieveOne+`/${row.idid}`)
                   .then((response) => {
-                     const date = response.data.date || "23.67.2009";
+                     const date = response.data.time || "23.67.2009";
                      rowData[0].setAttribute("date", date);
                      // console.log(rowData[0].attributes)
                   });
             });
             rowData[1].textContent = i.age;
-            rowData[2].textContent = i.job;
+            rowData[2].textContent = i.occupation;
             rowData.forEach((el) => {
                row.appendChild(el);
             });

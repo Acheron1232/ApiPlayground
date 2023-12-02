@@ -33,7 +33,9 @@ public class MainRest {
     @GetMapping("/server")
     public List<String> getServerProperties(){
         ArrayList<String> strings = new ArrayList<>();
-        strings.add("Port - 8080");
+        strings.add("Kovbasa");
+        strings.add("MySql 13.4");
+        strings.add("Sping Mama menya E(boot)");
 
         return strings;
     }
@@ -45,6 +47,7 @@ public class MainRest {
     public ResponseEntity<?> getEntity(@PathVariable Integer id){
         return ResponseEntity.ok(userService.getUserById(id).get());
     }
+    @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping("/database/insert")
     public void getEntity(@RequestBody UserRequest user){
          userService.save(User.builder().age(user.getAge()).occupation(user.getOccupation()).username(user.getUsername()).build());

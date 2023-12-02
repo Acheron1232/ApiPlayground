@@ -10,6 +10,6 @@ public class MainController {
 
     @GetMapping
     public String mainPage(){
-        return "task2";
+        return "restDB";
     }
 }
