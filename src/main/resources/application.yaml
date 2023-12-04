@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: mydb.cw5kc6m6yvdi.us-east-1.rds.amazonaws.com:3306
+    url: jdbc:mysql://mydb.cw5kc6m6yvdi.us-east-1.rds.amazonaws.com:3306/apistorage
     password: kt6aiNeQ026wf2zwEgcl
     username: admin
     driver-class-name: com.mysql.cj.jdbc.Driver
