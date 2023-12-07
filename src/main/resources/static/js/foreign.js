@@ -98,10 +98,9 @@ changePars.forEach((el) => {
 });
 
 geoInputs.forEach((el) => {
-
-   el.addEventListener("input", function(){
+   el.addEventListener("input", function () {
       el.style.width = Math.max(el.value.length, 6) + "ch";
-   })
+   });
    // console.log(geoInputs);
    el.addEventListener("keydown", function (event) {
       // console.log(event);
@@ -135,8 +134,8 @@ getCountry.addEventListener("click", function () {
          countryData.languages = data[0].languages;
          countryData.capital = data[0].capital;
          if (document.querySelector(".countryData ul")) {
-            if (document.querySelector(".currencyData div")){
-               console.log("yey")
+            if (document.querySelector(".currencyData div")) {
+               console.log("yey");
                document.querySelector(".currencyData div").remove();
                document.querySelector(".currencyData > h3").remove();
                document.querySelector(".currencyData > h4").remove();
@@ -173,8 +172,9 @@ getCountry.addEventListener("click", function () {
                langList.appendChild(languageEl);
             }
          } else {
-
-            document.querySelector(".currencyData").classList.remove("--hidden");
+            document
+               .querySelector(".currencyData")
+               .classList.remove("--hidden");
             // console.log(data[0]);
             // console.log(userData);
 
@@ -246,16 +246,20 @@ getCurrency.addEventListener("click", function () {
    fetch(`https://restcountries.com/v3.1/name/${userData.country}`)
       .then((res) => res.json())
       .then((dt) => {
-         countryData.currency = Object.entries(dt[0].currencies)[0][0].toLowerCase();
-         countryData.currencyFullName = Object.entries(dt[0].currencies)[0][1].name;
+         countryData.currency = Object.entries(
+            dt[0].currencies
+         )[0][0].toLowerCase();
+         countryData.currencyFullName = Object.entries(
+            dt[0].currencies
+         )[0][1].name;
          // console.log(countryData.currencyFullName);
          // console.log(countryData.currency);
-         const url = `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${countryData.currency}.json`
+         const url = `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${countryData.currency}.json`;
          fetch(url)
             .then((response) => response.json())
             .then((data) => {
-               if (document.querySelector(".currencyData div")){
-                  console.log("yey")
+               if (document.querySelector(".currencyData div")) {
+                  console.log("yey");
                   document.querySelector(".currencyData div").remove();
                   document.querySelector(".currencyData > h3").remove();
                   document.querySelector(".currencyData > h4").remove();
@@ -268,35 +272,49 @@ getCurrency.addEventListener("click", function () {
                title.textContent = countryData.currency.toUpperCase();
                const subTitle = document.createElement("h4");
                subTitle.textContent = countryData.currencyFullName;
-               
+
                const box = document.createElement("div");
                box.className = "box";
-               
+
                const usdBox = document.createElement("div");
                const h4Usd = document.createElement("h4");
-               h4Usd.textContent = "USD"
+               h4Usd.textContent = "USD";
                const pUsd = document.createElement("p");
-               pUsd.textContent = Math.trunc((1/usd)*10) / 10;
+               pUsd.textContent = Math.trunc((1 / usd) * 10) / 10;
                usdBox.appendChild(h4Usd);
                usdBox.appendChild(pUsd);
 
                const eurBox = document.createElement("div");
                const h4Eur = document.createElement("h4");
-               h4Eur.textContent = "EURO"
+               h4Eur.textContent = "EURO";
                const pEur = document.createElement("p");
-               pEur.textContent = Math.trunc((1/eur)*10) / 10;
+               pEur.textContent = Math.trunc((1 / eur) * 10) / 10;
                eurBox.appendChild(h4Eur);
                eurBox.appendChild(pEur);
-               
-
 
                box.appendChild(usdBox);
                box.appendChild(eurBox);
                parentNode.appendChild(title);
                parentNode.appendChild(subTitle);
                parentNode.appendChild(box);
-
             });
       });
-   
+});
+
+// Weather
+const key = "244b806036c64a5d8d7151009230712";
+const weatherURl = `http://api.weatherapi.com/v1/current.json?key=${key}&q=`;
+const weatherB = document.querySelector(".getWeather");
+
+const weatherDisplay = document.querySelector(".weatherData div")
+weatherB.addEventListener("click", function () {
+   console.log("oleg");
+   fetch(weatherURl + "Sumy")
+      .then((response) => response.json())
+      .then((data) => {
+         console.log(data);
+         const {current} = data;
+         console.log(weatherDisplay);
+         weatherDisplay.textContent = current.feelslike_c;
+      });
 });
