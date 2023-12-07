@@ -2,7 +2,7 @@
 
 --changeset acheron:1
 create table message(
-                        id serial primary key ,
+                        id serial primary key,
                         sender text,
                         content text,
                         time timestamp,
