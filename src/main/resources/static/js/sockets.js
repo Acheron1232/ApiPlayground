@@ -9,13 +9,13 @@ function connect() {
             showMessage(JSON.parse(response.body));
         });
     });
-    // axios.get("/messages").then(response => {
-    //   console.log(response);
-    //     for (const i of response.data) {
-    //         showMessage(i);
-    //         console.log(i);
-    //     }
-    // })
+    axios.get("/messages").then(response => {
+      console.log(response);
+        for (const i of response.data) {
+            showMessage(i);
+            console.log(i);
+        }
+    })
 }
 
 function sendMessage() {

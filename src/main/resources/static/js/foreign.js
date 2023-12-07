@@ -305,13 +305,14 @@ getCurrency.addEventListener("click", function () {
 const key = "244b806036c64a5d8d7151009230712";
 const weatherURl = `http://api.weatherapi.com/v1/current.json?key=${key}&q=`;
 const weatherB = document.querySelector(".getWeather");
-
+const city = document.querySelector(".g-city input");
 const weatherDisplay = document.querySelector(".weatherData div")
 weatherB.addEventListener("click", function () {
    console.log("oleg");
-   fetch(weatherURl + "Sumy")
+   fetch(weatherURl + city.value)
       .then((response) => response.json())
       .then((data) => {
+         document.querySelector(".weatherData").classList.remove("--hidden");
          console.log(data);
          const {current} = data;
          console.log(weatherDisplay);
