@@ -16,7 +16,6 @@ const sList = document.querySelector(".server-info ul");
 sInfo.addEventListener("mouseenter", function(){
    axios.get(urls.server).then(response=>{
       const data = response.data;
-      console.log(data);
       sList.querySelector("li:nth-child(1)").textContent = data[0];
       sList.querySelector("li:nth-child(2)").textContent = data[1];
       sList.querySelector("li:nth-child(3)").textContent = data[2];
@@ -49,8 +48,7 @@ const inputs = {
 };
 
 dbWrite.addEventListener("click", function () {
-   console.log(inputs);
-   console.log(inputs.get());
+
    const data = inputs.get();
 
    fetch(urls.insert, {
@@ -88,11 +86,9 @@ retrieve.addEventListener("click", function () {
    axios.get(urls.retrieve).then((response) => {
       const data = response.data;
       if (globals.dbLength === testData.length) {
-         console.log("aboba");
       } else {
          document.querySelector(".recievedData").innerHTML = "";
          for (const i of data) {
-            console.log(i);
             const row = document.createElement("ul");
             row.classList.add("row");
             const rowData = [
@@ -117,7 +113,6 @@ retrieve.addEventListener("click", function () {
                row.appendChild(el);
             });
             // console.log(rowData)
-            console.log(rowData.map((el) => el.textContent));
             document.querySelector(".recievedData").appendChild(row);
             globals.dbLength = data.length;
          }

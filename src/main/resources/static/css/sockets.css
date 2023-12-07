@@ -57,6 +57,13 @@ h1 {
    width: 7ch;
    padding: 0.2rem 0.5rem;
 }
+.UI input[type='color'] {
+   /* flex-basis: 50px; */
+   cursor: text;
+   width: 2rem;
+   height: 2rem;
+   align-self: center;
+}
 
 textarea {
    all: unset;

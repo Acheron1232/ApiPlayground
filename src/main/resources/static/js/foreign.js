@@ -61,18 +61,13 @@ const getCurrency = document.querySelector(".getCurrency");
 geoFind.addEventListener("click", function () {
    userData.geoGui.country.classList.add("loading");
    userData.geoGui.city.classList.add("loading");
-   // console.log(userData.geoGui);
-   // console.log(userData.geoGui.country.classList);
-   // console.log(userData.geoGui.country);
    navigator.geolocation.getCurrentPosition(
       function (position) {
-         // console.log(position);
          userData.position.lotitude = position.coords.latitude;
          userData.position.longitude = position.coords.longitude;
          handlePosition(userData.position);
       },
       function () {
-         console.log("could not acess location");
       }
    );
 });
@@ -135,7 +130,6 @@ getCountry.addEventListener("click", function () {
          countryData.capital = data[0].capital;
          if (document.querySelector(".countryData ul")) {
             if (document.querySelector(".currencyData div")) {
-               console.log("yey");
                document.querySelector(".currencyData div").remove();
                document.querySelector(".currencyData > h3").remove();
                document.querySelector(".currencyData > h4").remove();
@@ -259,7 +253,6 @@ getCurrency.addEventListener("click", function () {
             .then((response) => response.json())
             .then((data) => {
                if (document.querySelector(".currencyData div")) {
-                  console.log("yey");
                   document.querySelector(".currencyData div").remove();
                   document.querySelector(".currencyData > h3").remove();
                   document.querySelector(".currencyData > h4").remove();
@@ -308,14 +301,11 @@ const weatherB = document.querySelector(".getWeather");
 const city = document.querySelector(".g-city input");
 const weatherDisplay = document.querySelector(".weatherData div")
 weatherB.addEventListener("click", function () {
-   console.log("oleg");
    fetch(weatherURl + city.value)
       .then((response) => response.json())
       .then((data) => {
          document.querySelector(".weatherData").classList.remove("--hidden");
-         console.log(data);
          const {current} = data;
-         console.log(weatherDisplay);
          weatherDisplay.textContent = current.feelslike_c;
       });
 });
