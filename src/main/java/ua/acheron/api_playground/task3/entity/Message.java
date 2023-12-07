@@ -2,6 +2,7 @@ package ua.acheron.api_playground.task3.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,7 +19,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Message {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
     String sender;
     String content;

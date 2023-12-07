@@ -29,7 +29,7 @@ public class MainController {
     @MessageMapping("/app/send_message")
     @SendTo("/topic/public")
     public MessageDto getMessage(@Payload MessageDto s){
-        messageRepo.save(Message.builder().color(s.getColor()).time(LocalDateTime.now()).content(s.getContent()).sender(s.getSender()).build());
+        messageRepo.save(Message.builder().id(0).color(s.getColor()).time(LocalDateTime.now()).content(s.getContent()).sender(s.getSender()).build());
         return s;
     }
 

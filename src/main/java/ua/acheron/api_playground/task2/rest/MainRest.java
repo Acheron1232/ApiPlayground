@@ -50,6 +50,6 @@ public class MainRest {
     @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping("/database/insert")
     public void getEntity(@RequestBody UserRequest user){
-         userService.save(User.builder().age(user.getAge()).occupation(user.getOccupation()).username(user.getUsername()).build());
+        userService.save(User.builder().age(user.getAge()).occupation(user.getOccupation()).username(user.getUsername()).build());
     }
 }
