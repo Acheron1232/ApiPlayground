@@ -14,9 +14,9 @@
          <aside class="navbar">
             <nav class="menu-wrapper">
                <ul class="menu">
-                  <li><a href="index.html">Foreign Api</a></li>
-                  <li><a href="restDB.html">Rest Server Api</a></li>
-                  <li class="active"><a href="sockets.html">Web Socket</a></li>
+                  <li><a href="/task1">Foreign Api</a></li>
+                  <li><a href="/task2">Rest Server Api</a></li>
+                  <li class="active"><a href="/task3">Web Socket</a></li>
                </ul>
                <ul class="menu">
                   <li><a href="">Credits</a></li>
@@ -27,18 +27,19 @@
             <h1>Web Sockets</h1>
             <section class="canvas">
                <ul class="messages">
-                  <li author="Deniel: ">Watsup baby girl</li>
                </ul>
             </section>
             <section class="UI">
                <input type="text" class="author" placeholder="Name">
-               <textarea placeholder="Message"></textarea>
-               <input type="button" value="send">
+               <input type="color">
+               <textarea placeholder="Message" id="messageInput"></textarea>
+               <input type="button" value="send" onclick="sendMessage()">
             </section>
          </main>
       </div>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
       <script src="../static/js/sockets.js"></script>
    </body>
 </html>
