@@ -9,6 +9,7 @@ html, body, .wrapper{
    /* border: 1px solid #fff; */
    height: 100%;
    align-items: start;
+   overflow: auto;
 }
 
 

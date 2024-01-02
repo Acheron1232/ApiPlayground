@@ -11,8 +11,8 @@
 
    padding: 15px 30px;
    gap: 45px;
-   overflow: scroll;
    position: relative;
+   overflow: auto;
 }
 
 .--hidden {
@@ -210,7 +210,7 @@ h1 {
    box-shadow: inset 0 4px 16px rgba(0,0,0,0.5);
    min-height: 300px;
    max-height: 450px;
-   overflow: scroll;
+   overflow: auto;
    padding: 1.5rem;
    background-color: rgba(0, 0, 0, 0.05);
    /* border-radius: 20px; */
@@ -232,16 +232,23 @@ h1 {
    display: grid;
    grid-template-columns: repeat(7, 1fr);
    /* box-shadow: inset 0 2px 16px rgba(0,0,0,0.5); */
+   position: relative;
+   background-color: rgba(255, 255, 255, 0.02);
+   border-radius: 10px;
    
 }
 
-.row > * {
+.row > li {
    flex-grow: 1;
    border-radius: 10px;
    background-color: rgba(255, 255, 255, 0.05);
    padding: 0.5rem 1rem;
    font-size: 2rem;
    position: relative;
+}
+
+.editable > li {
+   outline: 2px solid #bdbdbd;
 }
 
 .row li:nth-child(1) {
@@ -260,4 +267,33 @@ h1 {
 }
 .row li:nth-child(3) {
    grid-column: span 4;
+}
+
+.row > button {
+   display: block;
+   position: absolute;
+   right: 0.5rem;
+   height: 1rem;
+   aspect-ratio: 1;
+   width: 1rem;
+   background-color: rgba(255, 255, 255, 0.05);
+   opacity: 0.5;
+   transition: all 0.15s ease;
+}
+
+.row > button:hover {
+   opacity: 1;
+}
+
+.editBtn{
+   top: 0.5rem;
+   background: url("../icons/editUser.svg") 50% 50%/cover no-repeat;
+}
+
+.save {
+   background-image: url("../icons/save.svg");
+}
+.deleteBtn {
+   top: calc(1rem + 1rem);
+   background: url("../icons/delete.svg") 50% 50%/cover no-repeat;
 }
