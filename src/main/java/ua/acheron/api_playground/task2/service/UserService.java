@@ -22,6 +22,10 @@ public class UserService {
         user.setTime(LocalDateTime.now());
         userRepo.save(user);
     }
+    public void delete(Integer id) {
+
+        userRepo.deleteById(id);
+    }
 
     public Optional<User> getUserById(Integer id) {
         return userRepo.findById(id);

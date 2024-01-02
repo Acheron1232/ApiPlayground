@@ -1,7 +1,9 @@
+server:
+  port: 8080
 spring:
   datasource:
-    url: jdbc:mysql://mydb.cw5kc6m6yvdi.us-east-1.rds.amazonaws.com:3306/apistorage
-    password: kt6aiNeQ026wf2zwEgcl
+    url: jdbc:mysql://database-1.cw5kc6m6yvdi.us-east-1.rds.amazonaws.com:3306/apiPlay
+    password: qwerty123
     username: admin
     driver-class-name: com.mysql.cj.jdbc.Driver
 

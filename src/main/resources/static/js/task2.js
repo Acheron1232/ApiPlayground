@@ -1,5 +1,3 @@
-
-
 async function asd(){
     let a = await fetch("/api/v2/add",{
         method:"POST",

@@ -33,10 +33,9 @@ public class MainRest {
     @GetMapping("/server")
     public List<String> getServerProperties(){
         ArrayList<String> strings = new ArrayList<>();
-        strings.add("Kovbasa");
+        strings.add("Port: 8080");
         strings.add("MySql 13.4");
-        strings.add("Sping Mama menya E(boot)");
-
+        strings.add("Spring Boot 3.2");
         return strings;
     }
     @GetMapping("/database/all")
@@ -48,8 +47,14 @@ public class MainRest {
         return ResponseEntity.ok(userService.getUserById(id).get());
     }
     @CrossOrigin(origins = "http://localhost:8080")
-    @PostMapping("/database/insert")
+    @PutMapping("/database/edit")
     public void getEntity(@RequestBody UserRequest user){
-        userService.save(User.builder().age(user.getAge()).occupation(user.getOccupation()).username(user.getUsername()).build());
+        userService.save(User.builder().id(user.getId()).age(user.getAge()).occupation(user.getOccupation()).username(user.getUsername()).build());
     }
+    @CrossOrigin(origins = "http://localhost:8080")
+    @DeleteMapping("/database/id/{id}")
+    public void delete(@PathVariable Integer id){
+        userService.delete(id);
+    }
+
 }
