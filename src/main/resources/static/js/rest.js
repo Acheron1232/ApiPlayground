@@ -1,4 +1,4 @@
-const YESS = "";
+const YESS = "YESS";
 
 const PHurl = "https://restcountries.com/v3.1/name/usa";
 
@@ -19,6 +19,7 @@ const sList = document.querySelector(".server-info ul");
 
 sInfo.addEventListener("mouseenter", function () {
    axios.get(urls.server).then((response) => {
+      console.log(urls.server)
       const data = response.data;
       sList.querySelector("li:nth-child(1)").textContent = data[0];
       sList.querySelector("li:nth-child(2)").textContent = data[1];
@@ -89,7 +90,7 @@ const retrieve = document.querySelector(".retrieve");
 
 retrieve.addEventListener("click", function () {
    axios.get(urls.retrieve).then((response) => {
-      const data = testData;
+      const data = response.data;
       if (globals.dbLength === testData.length) {
       } else {
          document.querySelector(".recievedData").innerHTML = "";

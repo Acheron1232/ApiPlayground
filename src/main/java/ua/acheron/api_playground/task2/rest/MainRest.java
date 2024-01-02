@@ -34,14 +34,18 @@ public class MainRest {
     public List<String> getServerProperties(){
         ArrayList<String> strings = new ArrayList<>();
         strings.add("Port: 8080");
-        strings.add("MySql 13.4");
+        strings.add("MySql 1.4");
         strings.add("Spring Boot 3.2");
         return strings;
     }
-    @GetMapping("/database/all")
-    public ResponseEntity<?> getAllEntities(){
-        return ResponseEntity.ok(userService.getAllUsers());
-    }
+    // я ото тут його пробував поправить, а воно того не хоче крч
+// @CrossOrigin(origins = "http://localhost:8080")
+//     @PostMapping("/database/insert")
+//     public void getEntity(@RequestBody UserRequest user){
+//         userService.save(User.builder().id(user.getId()).age(user.getAge()).occupation(user.getOccupation()).username(user.getUsername()).build());
+//         }
+    // токо отой блок що зверху, далі нічо не трогав
+
     @GetMapping("/database/id/{id}")
     public ResponseEntity<?> getEntity(@PathVariable Integer id){
         return ResponseEntity.ok(userService.getUserById(id).get());

@@ -41,34 +41,4 @@ function showMessage(message) {
     li.appendChild(messg);
     messages.appendChild(li);
 }
-
-showMessage({ 'content': "message", 'sender': "sender", 'color': "yellow" })
-showMessage({ 'content': "message", 'sender': "sender", 'color': "yellow" })
-showMessage({ 'content': "message", 'sender': "sender", 'color': "yellow" })
-showMessage({ 'content': "message", 'sender': "sender", 'color': "yellow" })
-showMessage({ 'content': "message", 'sender': "sender", 'color': "yellow" })
-showMessage({ 'content': "message", 'sender': "sender", 'color': "yellow" })
-showMessage({ 'content': "message", 'sender': "sender", 'color': "yellow" })
-showMessage({ 'content': "message", 'sender': "sender", 'color': "yellow" })
-showMessage({ 'content': "message", 'sender': "sender", 'color': "yellow" })
-showMessage({ 'content': "message", 'sender': "sender", 'color': "yellow" })
-showMessage({ 'content': "message", 'sender': "sender", 'color': "yellow" })
-showMessage({ 'content': "message", 'sender': "sender", 'color': "yellow" })
-showMessage({ 'content': "message", 'sender': "sender", 'color': "yellow" })
-showMessage({ 'content': "message", 'sender': "sender", 'color': "yellow" })
-showMessage({ 'content': "message", 'sender': "sender", 'color': "yellow" })
-showMessage({ 'content': "message", 'sender': "sender", 'color': "yellow" })
-showMessage({ 'content': "message", 'sender': "sender", 'color': "yellow" })
-showMessage({ 'content': "message", 'sender': "sender", 'color': "yellow" })
-showMessage({ 'content': "message", 'sender': "sender", 'color': "yellow" })
-showMessage({ 'content': "message", 'sender': "sender", 'color': "yellow" })
-showMessage({ 'content': "message", 'sender': "sender", 'color': "yellow" })
-showMessage({ 'content': "message", 'sender': "sender", 'color': "yellow" })
-showMessage({ 'content': "message", 'sender': "sender", 'color': "yellow" })
-showMessage({ 'content': "message", 'sender': "sender", 'color': "yellow" })
-showMessage({ 'content': "message", 'sender': "sender", 'color': "yellow" })
-showMessage({ 'content': "message", 'sender': "sender", 'color': "yellow" })
-showMessage({ 'content': "message", 'sender': "sender", 'color': "yellow" })
-showMessage({ 'content': "message", 'sender': "sender", 'color': "yellow" })
-
 connect();
